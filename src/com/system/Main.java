@@ -105,7 +105,7 @@ public class Main {
         }
     }
 
-    public boolean login(){
+    private boolean login(){
         clearscreen();
         System.out.println("\n\n\n-------------------------"); // 25 -
         System.out.println("-  EMPLOYEE LOGIN");
