@@ -93,7 +93,9 @@ public class Main {
                         clearscreen();
                         System.out.println("\n\n\n------------------------------------------------"); 
                         System.out.println("----------------  INVALID ACCESS   ---------------");
-                        System.out.println("--------------------------------------------------");    
+                        System.out.println("--------------------------------------------------"); 
+                        System.out.println("PRESS ANY KEY TO GO BACK TO MAIN MENU");
+                        kb.next();
                     }
                     break;  // Needs to be double-checked... might need to be after the most recent do/while loop instead
                 
