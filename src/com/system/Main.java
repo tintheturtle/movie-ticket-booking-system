@@ -19,7 +19,7 @@ public class Main {
             switch (menuChoice)
             {
                 case 1: 
-                    clearscreen();
+                    clearconsole();
                     int customerChoice;
                     do {    // encloses full case 1
                         System.out.println("\n\n\n------------------------------------------------"); 
@@ -64,7 +64,7 @@ public class Main {
                     if (login()){
                         int employeeChoice;
                         do{
-                            clearscreen();
+                            clearconsole();
                             System.out.println("\n\n\n------------------------------------------------"); 
                             System.out.println("----------------  Employee Panel   ---------------");
                             System.out.println("--------------------------------------------------");
@@ -95,7 +95,7 @@ public class Main {
                         } while (employeeChoice == 0);
                     }   // if login()
                     else{
-                        clearscreen();
+                        clearconsole();
                         System.out.println("\n\n\n------------------------------------------------"); 
                         System.out.println("----------------  INVALID ACCESS   ---------------");
                         System.out.println("--------------------------------------------------"); 
@@ -133,7 +133,7 @@ public class Main {
     }
 
     private boolean login(){
-        clearscreen();
+        clearconsole();
         System.out.println("\n\n\n-------------------------"); // 25 -
         System.out.println("-  EMPLOYEE LOGIN");
         System.out.print("\n-  PASSWORD: ");
@@ -147,6 +147,11 @@ public class Main {
             else
                 return false;
         }
+    }
+
+    /* Copied from: https://stackoverflow.com/questions/2979383/how-to-clear-the-console */
+    public static void clearconsole() throws IOException, InterruptedException{
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
 
