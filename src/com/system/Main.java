@@ -25,19 +25,22 @@ public class Main {
                         System.out.println("\n\n\n------------------------------------------------"); 
                         System.out.println("--  WELCOME TO OUR MOVIE TICKET BOOKING SYSTEM  --");
                         System.out.println("--------------------------------------------------");
-                        System.out.println("--  1. See Movie Showtimes                      --");
-                        System.out.println("--  2. Book Ticket                              --");
-                        System.out.println("--  3. View your Ticket(s)                      --");
-                        System.out.println("--  4. Cancel Ticket                            --");
-                        System.out.println("--  5. Back                                     --");
+                        System.out.println("--  1. List Movies                              --");
+                        System.out.println("--  2. See Showtime and Price for a Movie       --");
+                        System.out.println("--  3. Book Ticket                              --");
+                        System.out.println("--  4. View your Ticket(s)                      --");
+                        System.out.println("--  5. Cancel Ticket                            --");
+                        System.out.println("--  6. Back                                     --");
                         System.out.println("--------------------------------------------------");
                         
                         customerChoice = kb.nextInt();
                         switch (customerChoice)
                         {
                             case 1:
-                                ;
-
+                                seeMovieList();
+                                customerChoice=0;   // Goes back to customer page
+                                break;
+                                
                             case 2:
                                 ;
 
@@ -46,6 +49,8 @@ public class Main {
                             case 4:
                                 ;
                             case 5:
+                                ;
+                            case 6:
                                 break;  // actual implementation
                             default:
                                 System.out.println("\n\nPLEASE ENTER A VALID CHOICE");
@@ -105,6 +110,28 @@ public class Main {
         }
     }
 
+    private void seeMovieList(){
+        System.out.println("\n\n\n------------------------------------------------"); 
+        System.out.println("----  Movie  ------  |  ------  [Dates]  ---------");
+        System.out.println("--------------------------------------------------");
+
+        ArrayList<Movie> movies = Movie.getMovieList();
+        int num_movies = movies.size();
+        if (num_movies == 0){
+            System.out.println("CURRENTLY NO MOVIES");
+            return null;
+        }
+        else{
+            for (Movie movie : movies){
+                System.out.println("-- " + movie.title + ":    " + movie.showtimes);    // showtime as string is day value
+            }
+            System.out.println("--------------------------------------------------");
+        }
+        System.out.println("\n\nPRESS ANY KEY TO CONTINUE")
+        kb.next();
+
+    }
+
     private boolean login(){
         clearscreen();
         System.out.println("\n\n\n-------------------------"); // 25 -
@@ -121,4 +148,6 @@ public class Main {
                 return false;
         }
     }
+
+
 }
