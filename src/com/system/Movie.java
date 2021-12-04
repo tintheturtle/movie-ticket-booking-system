@@ -9,12 +9,13 @@ public class Movie{
 
     String title;
     double price;
-    Arraylist<ShowTimes> showtimes;
+    ArrayList<ShowTimes> showtimes;
 
     public Movie(String title, double price, ArrayList<ShowTime> showtimes){
         this.title = title;
         this.price  = price;
         this.showtimes = showtimes;
+
 
         this.movieMap.put(title, this.Movie)
     }
@@ -22,6 +23,10 @@ public class Movie{
     public static Movie getMovie(String title){
         return movieMap.get(title);
     }
+    /*  
+    *  Returns an ArrayList of movie objects
+    *  Alternatively can use movieMap.keySet() to get the String title of each movie
+    */ 
     public static ArrayList<Movie> getMovieList(){ 
         return (new ArrayList<Movie>(movieMap.values()));
     }
@@ -30,7 +35,9 @@ public class Movie{
     public double getPrice(){ return this.price; }
     public ArrayList<ShowTime> getShowTimes(){ return this.showtimes; }
     
+    @Override
+    public String toString(){ return this.title; }
+
     public void setPrice(double price){ this.price = price; }
     public void addShowtime(ShowTime newTime){ this.showtimes.add(newTime); }
-
 }
