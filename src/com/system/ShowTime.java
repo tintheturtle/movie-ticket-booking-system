@@ -10,10 +10,16 @@ public class ShowTime{
         this.times = new ArrayList<String>(time);
     }
 
-    @override
+    @Override
     public ShowTime(String day, ArrayList<String> times){
         this.day = day;
         this.times = times
+    }
+
+    /* Formatted as such for showMovies() in Main */
+    public String toString()
+    {
+        return this.day;
     }
 
     
