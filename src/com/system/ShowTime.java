@@ -12,9 +12,9 @@ public class ShowTime{
         this.showList = new ArrayList<Movie>();
     }
      
-    public void addMovie(String title, String time) {
+    public void addMovie(String title, String time, String day) {
 
-        Movie addedMovie = new Movie(title, time);
+        Movie addedMovie = new Movie(title, time, day);
         showList.add(addedMovie);
 
         // If movie is already in map then add movie to the list of times, otherwise just create a new list
@@ -33,17 +33,31 @@ public class ShowTime{
     /* Formatted as such for showMovies() in Main */
     public void showMovies()
     {
-        for (Movie show : showList) {
-            System.out.printf("%-20s %-20s\n", show.title, show.time);
+        List<String> movieList = new ArrayList<String>(movieMap.keySet());
+
+        int idx = 1;
+        for (String show : movieList) {
+            System.out.printf("\t\t\t%-20s \t%-20s\n", idx++, show);
         }
     }
 
-    public void displayMovieShowtimes(String title)
+    public ArrayList<Movie> displayMovieTimes(String title)
     {
+        try {
+            ArrayList<Movie> movies = movieMap.get(title);
 
-        for (Movie show : showList) {
-            System.out.printf("%-20s %-20s\n", show.title, show.time);
+            int idx = 1;
+            for (Movie show : movies) {
+                System.out.printf("\t\t%-20s \t%-20s \t%-20s\n", idx++, show.date, show.time);
+            }
+
+            return movies;
+        } catch (NullPointerException e) {
+
+            System.out.println("Invalid movie title. Please try again.");
+            return null;
         }
+
     }
 
     

@@ -13,13 +13,14 @@ public class Movie{
 
     String title;
     String time;
+    String date;
     double price;
 
     // Constructors
-    public Movie(String title, String time, double price){
+    public Movie(String title, String time, String date){
         this.title = title;
         this.time = time;
-        this.price  = price;
+        this.date  = date;
 
     }
 
