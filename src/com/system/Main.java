@@ -22,8 +22,6 @@ public class Main {
         System.out.println("\n\n\n------------------------------------------------");
         System.out.println("----  Movie  ------  |  ------  [Dates]  ---------");
         System.out.println("--------------------------------------------------");
-
-
         int num_movies = showtimes.showList.size();
         if (num_movies == 0){
             System.out.println("CURRENTLY NO MOVIES");
@@ -120,11 +118,20 @@ public class Main {
                                 break;
                                 
                             case 2:
+                                System.out.println("Which movie would you like to see the showtimes for?");
+
+
+
+
                                 break;
 
                             case 3:
                                 // Selecting Movie
                                 System.out.println("Which movie would you like to see?");
+
+
+
+
 
 
 
@@ -177,8 +184,8 @@ public class Main {
                                     String title = kb.nextLine();
                                     System.out.println("-- Please enter movie time and day (DD/MM/YY) :");
                                     String time = kb.nextLine();
-                                    Movie newMovie = new Movie(title, time);
-                                    showtimes.showList.add(newMovie);
+
+                                    showtimes.addMovie(title, time);
                                     break;
                                 case 3:
                                     ;

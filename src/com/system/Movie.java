@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Movie{
 
-    public static HashMap<String, Movie> movieMap = new HashMap<String, Movie>();
+    public static ArrayList<String> times = new ArrayList<String>();
 
     private int rowSize = 10;
     private int colSize = 10;
@@ -65,7 +65,7 @@ public class Movie{
     }
 
     // Method for checking if seat is available
-    public boolean selectSeats(String letter, int row) {
+    public boolean checkSeat(String letter, int row) {
         int col = (int)letter.toCharArray()[0] - 64;
         if (seats[row][col] == true) {
             return false;
@@ -73,7 +73,14 @@ public class Movie{
         else {
             return true;
         }
-
     }
+
+    // Reserve seat by marking them as true
+    public void reserveSeat(String letter, int row) {
+        int col = (int)letter.toCharArray()[0] - 64;
+        seats[row][col] = true;
+    }
+
+
 
 }

@@ -15,9 +15,11 @@ public class Booking {
         // Checking if seat is taken
         int col = (int)letter.toCharArray()[0] - 64;
 
-        if (movie.selectSeats(letter, row)) {
+        if (!movie.checkSeat(letter, row)) {
             System.out.println("This seat is currently unavailable. Please select another seat");
             return false;
+        } else {
+            movie.reserveSeat(letter, row);
         }
 
 
