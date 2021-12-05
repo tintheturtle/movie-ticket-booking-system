@@ -30,6 +30,7 @@ public class Movie{
 
     }
 
+    // Method for displaying seats
     public void displaySeats() {
 
         System.out.println("\t---------------------Screen------------------");
@@ -61,6 +62,18 @@ public class Movie{
         }
 
         System.out.println("\n \t \t \t[X] Unavailable [ ] Available");
+    }
+
+    // Method for checking if seat is available
+    public boolean selectSeats(String letter, int row) {
+        int col = (int)letter.toCharArray()[0] - 64;
+        if (seats[row][col] == true) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
     }
 
 }

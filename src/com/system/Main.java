@@ -18,7 +18,7 @@ public class Main {
     // Boolean for flagging if current user is an employee
     static boolean isEmployee = false;
 
-    private static <Movie> void seeMovieList(){
+    public static void displayMovieList(){
         System.out.println("\n\n\n------------------------------------------------");
         System.out.println("----  Movie  ------  |  ------  [Dates]  ---------");
         System.out.println("--------------------------------------------------");
@@ -104,7 +104,7 @@ public class Main {
                         System.out.println("--  WELCOME TO OUR MOVIE TICKET BOOKING SYSTEM  --");
                         System.out.println("--------------------------------------------------");
                         System.out.println("--  1. List Movies                              --");
-                        System.out.println("--  2. See Showtime and Price for a Movie       --");
+                        System.out.println("--  2. See Showtimes for a Movie                --");
                         System.out.println("--  3. Book Ticket                              --");
                         System.out.println("--  4. View your Ticket(s)                      --");
                         System.out.println("--  5. Cancel Ticket                            --");
@@ -115,17 +115,28 @@ public class Main {
                         switch (customerChoice)
                         {
                             case 1:
-                                seeMovieList();
+                                displayMovieList();
                                 customerChoice=0;   // Goes back to customer page
                                 break;
                                 
                             case 2:
-                                Movie test = new Movie("Spiderman 2", "12/21/22");
-                                test.displaySeats();
                                 break;
 
                             case 3:
-                                ;
+                                // Selecting Movie
+                                System.out.println("Which movie would you like to see?");
+
+
+
+                                // Reserving seat
+                                System.out.println("How many seats would you like to reserve?");
+                                int reserveNum = kb.nextInt();
+                                if (reserveNum < 0) {
+                                    System.out.println("Please try again and enter a number greater than 0.");
+                                }
+
+
+                                break;
                             case 4:
                                 ;
                             case 5:
@@ -159,7 +170,7 @@ public class Main {
                             switch (employeeChoice)
                             {
                                 case 1:
-                                    seeMovieList();
+                                    displayMovieList();
                                     customerChoice=0;
                                 case 2:
                                     System.out.println("-- Please enter movie title :");
