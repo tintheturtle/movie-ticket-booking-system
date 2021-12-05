@@ -10,7 +10,7 @@ public class ShowTime{
     public ShowTime(){
         this.showList = new ArrayList<Movie>();
     }
-
+     
     public void addMovie(String title, String time, double price) {
 
         Movie addedMovie = new Movie(title, time, price);
