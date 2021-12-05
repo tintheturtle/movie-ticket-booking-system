@@ -15,6 +15,7 @@ public class Movie{
     String time;
     double price;
 
+    // Constructors
     public Movie(String title, String time, double price){
         this.title = title;
         this.time = time;
@@ -22,19 +23,11 @@ public class Movie{
 
     }
 
+    // Constructors (via method overloading)
     public Movie(String title, String time){
         this.title = title;
         this.time = time;
 
-    }
-
-    public String getTitle(){ return this.title; }
-
-    @Override
-    public String toString(){ return this.title; }
-
-    public void setPrice(double price){
-        this.price = price;
     }
 
     public void displaySeats() {
