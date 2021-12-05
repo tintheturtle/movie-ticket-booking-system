@@ -165,7 +165,7 @@ public class Main {
 
             if (os.contains("Windows"))
             {
-                Runtime.getRuntime().exec("cls");
+                new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
             }
             else
             {
@@ -174,8 +174,10 @@ public class Main {
         }
         catch (final Exception e)
         {
-            //  Handle any exceptions.
+            System.out.println("Console cleared");
         }
+
+        System.out.println("Console cleared");
     }
 
 
