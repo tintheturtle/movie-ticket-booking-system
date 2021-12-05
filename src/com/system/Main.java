@@ -12,7 +12,74 @@ public class Main {
     static Scanner kb = new Scanner(System.in);
     static String PASSWORD = "password";
 
+    // Showtime list
     static ShowTime showtimes = new ShowTime();
+
+    // Boolean for flagging if current user is an employee
+    static boolean isEmployee = false;
+
+    private static <Movie> void seeMovieList(){
+        System.out.println("\n\n\n------------------------------------------------");
+        System.out.println("----  Movie  ------  |  ------  [Dates]  ---------");
+        System.out.println("--------------------------------------------------");
+
+
+        int num_movies = showtimes.showList.size();
+        if (num_movies == 0){
+            System.out.println("CURRENTLY NO MOVIES");
+        }
+        else{
+            showtimes.showMovies();
+            System.out.println("--------------------------------------------------");
+        }
+        System.out.println("\n\nPRESS ANY KEY TO CONTINUE");
+        kb.next();
+
+    }
+
+    private static boolean login() throws IOException, InterruptedException {
+        clearconsole();
+        System.out.println("\n\n\n-------------------------"); // 25 -
+        System.out.println("-  EMPLOYEE LOGIN");
+        System.out.print("\n-  PASSWORD: ");
+        String pass = kb.next();
+        if (pass.equals(PASSWORD)) {
+
+            return true;
+        }
+        else{
+            System.out.print("\n\nINCORRECT LOGIN. RETRY? (Y/N): ");
+            String retry = kb.next();
+            if (retry.equals('Y')) {
+                return login();
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    /* Copied from: https://stackoverflow.com/questions/2979383/how-to-clear-the-console */
+    public static void clearconsole() throws IOException, InterruptedException{
+        try
+        {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows"))
+            {
+                new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+            }
+            else
+            {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e)
+        {
+        }
+
+        System.out.println("\n\n");
+    }
 
 
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -53,7 +120,9 @@ public class Main {
                                 break;
                                 
                             case 2:
-                                ;
+                                Movie test = new Movie("Spiderman 2", "12/21/22");
+                                test.displaySeats();
+                                break;
 
                             case 3:
                                 ;
@@ -76,7 +145,7 @@ public class Main {
                         int employeeChoice;
                         do{
                             clearconsole();
-                            System.out.println("\n\n\n------------------------------------------------"); 
+                            System.out.println("\n\n\n------------------------------------------------");
                             System.out.println("----------------  Employee Panel   ---------------");
                             System.out.println("--------------------------------------------------");
                             System.out.println("--  1. See Movie Showtimes                      --");
@@ -90,9 +159,16 @@ public class Main {
                             switch (employeeChoice)
                             {
                                 case 1:
-                                    ;
+                                    seeMovieList();
+                                    customerChoice=0;
                                 case 2:
-                                    ;
+                                    System.out.println("-- Please enter movie title :");
+                                    String title = kb.nextLine();
+                                    System.out.println("-- Please enter movie time and day (DD/MM/YY) :");
+                                    String time = kb.nextLine();
+                                    Movie newMovie = new Movie(title, time);
+                                    showtimes.showList.add(newMovie);
+                                    break;
                                 case 3:
                                     ;
                                 case 4:
@@ -107,9 +183,9 @@ public class Main {
                     }   // if login()
                     else{
                         clearconsole();
-                        System.out.println("\n\n\n------------------------------------------------"); 
+                        System.out.println("\n\n\n------------------------------------------------");
                         System.out.println("----------------  INVALID ACCESS   ---------------");
-                        System.out.println("--------------------------------------------------"); 
+                        System.out.println("--------------------------------------------------");
                         System.out.println("PRESS ANY KEY TO GO BACK TO MAIN MENU");
                         kb.next();
                     }
@@ -121,64 +197,7 @@ public class Main {
         }
     }
 
-    private static <Movie> void seeMovieList(){
-        System.out.println("\n\n\n------------------------------------------------"); 
-        System.out.println("----  Movie  ------  |  ------  [Dates]  ---------");
-        System.out.println("--------------------------------------------------");
 
-
-        int num_movies = showtimes.showList.size();
-        if (num_movies == 0){
-            System.out.println("CURRENTLY NO MOVIES");
-        }
-        else{
-            showtimes.showMovies();
-            System.out.println("--------------------------------------------------");
-        }
-        System.out.println("\n\nPRESS ANY KEY TO CONTINUE");
-        kb.next();
-
-    }
-
-    private static boolean login() throws IOException, InterruptedException {
-        clearconsole();
-        System.out.println("\n\n\n-------------------------"); // 25 -
-        System.out.println("-  EMPLOYEE LOGIN");
-        System.out.print("\n-  PASSWORD: ");
-        String pass = kb.nextLine();
-        if (pass.equals(PASSWORD))
-            return true;
-        else{
-            System.out.print("\n\nINCORRECT LOGIN. RETRY? (Y/N): ");
-            if (kb.next().equals('Y'))
-                return login();
-            else
-                return false;
-        }
-    }
-
-    /* Copied from: https://stackoverflow.com/questions/2979383/how-to-clear-the-console */
-    public static void clearconsole() throws IOException, InterruptedException{
-        try
-        {
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows"))
-            {
-                new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
-            }
-            else
-            {
-                Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e)
-        {
-            System.out.println("Console cleared");
-        }
-
-        System.out.println("Console cleared");
-    }
 
 
 }

@@ -22,7 +22,9 @@ public class ShowTime{
     public void showMovies()
     {
         for (Movie show : showList) {
-            System.out.println(show);
+            System.out.printf("%-20s %-20s\n", show.title, show.time);
+
+
         }
     }
 
