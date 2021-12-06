@@ -339,6 +339,7 @@ public class Main {
                                 case 4:
                                     for (Ticket ticket : bookingList.bookingList.values()) {
                                         ticket.display();
+                                        System.out.println("\n");
                                     }
                                     break;
                                 case 5:
