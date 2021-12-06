@@ -1,6 +1,7 @@
 package com.system;
       
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -197,6 +198,7 @@ public class Main {
                                 }
 
                                 int completed = 0;
+                                ArrayList<Ticket> reservations = new ArrayList<Ticket>();
                                 while (completed < reserveNum) {
 
                                     // Display available seats
@@ -226,15 +228,14 @@ public class Main {
                                         continue;
                                     }
 
-                                    boolean success = bookingList.reserve(selection, row, col-1);
+                                    Ticket newTicket = bookingList.reserve(selection, row, col-1);
 
-                                    if (!success) {
-                                        System.out.println("An error occurred while reserving this seat. Please try again.");
-                                        continue;
-                                    }
+                                    reservations.add(newTicket);
 
                                     completed++;
                                 }
+
+                                bookingList.addBooking(reservations);
 
                                 break;
                             case 4:
@@ -249,10 +250,12 @@ public class Main {
                                 }
 
                                 // Retrieving ticket
-                                Ticket reservedSeat = bookingList.getTicket(ticketID);
+                                ArrayList<Ticket> reservedSeats = bookingList.getTicket(ticketID);
 
                                 // Displaying ticket
-                                reservedSeat.display();
+                                for (Ticket ticket : reservedSeats ) {
+                                    ticket.display();
+                                }
 
                                 break;
                             case 5:
@@ -337,9 +340,15 @@ public class Main {
                                 case 3:
                                     ;
                                 case 4:
-                                    for (Ticket ticket : bookingList.bookingList.values()) {
-                                        ticket.display();
-                                        System.out.println("\n");
+                                    for (ArrayList<Ticket> reservations : bookingList.bookingList.values()) {
+
+                                        for (Ticket ticket : reservations) {
+                                            ticket.display();
+                                            System.out.println("\n");
+                                        }
+
+                                        System.out.println("Next Reservation: ");
+
                                     }
                                     break;
                                 case 5:
