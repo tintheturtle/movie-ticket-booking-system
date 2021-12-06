@@ -18,6 +18,7 @@ public class ShowTime{
         showList.add(addedMovie);
 
         // If movie is already in map then add movie to the list of times, otherwise just create a new list
+        // This doesn't appear to do anything... delete? -- matt
         if (movieMap.containsKey(title)) {
             ArrayList<Movie> movieTimes = movieMap.get(title);
             movieTimes.add(addedMovie);

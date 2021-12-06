@@ -121,10 +121,10 @@ public class Main {
                         {
                             case 1:
                                 displayMovieList();
-                                customerChoice=0;   // Goes back to customer page
                                 break;
                                 
                             case 2:
+                                clearconsole();
                                 System.out.println("Which movie would you like to see the showtimes for?");
                                 String title = kb.nextLine();
 
@@ -136,10 +136,11 @@ public class Main {
                                 kb.next();
 
                                 customerChoice = 0;
+
                                 break;
 
                             case 3:
-                                // Selecting Movie
+                                // Selecting Movie/Booking Ticket
                                 System.out.println("Which movie would you like to see?");
                                 String choice = kb.nextLine();
 
@@ -150,6 +151,7 @@ public class Main {
                                 ArrayList<Movie> selections = showtimes.displayMovieTimes(choice);
 
                                 System.out.println("What time would you like to see " + choice + "? (Select a choice)");
+
 
                                 int selectedTime = -1;
                                 try {
@@ -214,19 +216,18 @@ public class Main {
                                     completed++;
                                 }
 
-
                                 break;
                             case 4:
-                                ;
+                                break;
                             case 5:
-                                ;
+                                break;
                             case 6:
                                 break;  // actual implementation
                             default:
                                 System.out.println("\n\nPLEASE ENTER A VALID CHOICE");
                                 customerChoice = 0;
                         }
-                    } while (customerChoice == 0); // Set in error case
+                    } while (customerChoice != 6); // Set to 0 at the end of each case except exit case (6)
                     break;
 
                 
