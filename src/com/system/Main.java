@@ -114,47 +114,53 @@ public class Main {
                         {
                             case 1:
                                 displayMovieList();
-                                customerChoice=0;   // Goes back to customer page
                                 break;
                                 
                             case 2:
+                                String movieTitle;
+                                clearconsole();
                                 System.out.println("Which movie would you like to see the showtimes for?");
+                                String movieTitle = kb.nextLine();
+                                boolean validTitle = showtimes.displayShowtimeForMovie(movieTitle); // Prints all necessary info
 
-
-
+                                if (!validTitle){
+                                    // Read next key, return to main menu.
+                                    kb.next();
+                                }
 
                                 break;
 
                             case 3:
-                                // Selecting Movie
+                                // Selecting Movie/Booking Ticket
                                 System.out.println("Which movie would you like to see?");
+                                String movieTitle = kb.nextLine();  
+                                // I think we need a method getMovieFromTitle(String)->Movie in ShowTime class
 
-
-
+                                int availableSeats = 0;
 
 
 
 
                                 // Reserving seat
-                                System.out.println("How many seats would you like to reserve?");
+                                System.out.printf("%d Seats available. How many seats would you like to reserve?\n", availableSeats);
                                 int reserveNum = kb.nextInt();
-                                if (reserveNum < 0) {
-                                    System.out.println("Please try again and enter a number greater than 0.");
+                                if (reserveNum < 0 || availableSeats < reserveNum) {
+                                    //System.out.println("Please try again and enter a number greater than 0.");
+                                    System.out.println("Could not reserve specified number of seats, please ensure your number is valid.")
                                 }
-
 
                                 break;
                             case 4:
-                                ;
+                                break;
                             case 5:
-                                ;
+                                break;
                             case 6:
                                 break;  // actual implementation
                             default:
                                 System.out.println("\n\nPLEASE ENTER A VALID CHOICE");
                                 customerChoice = 0;
                         }
-                    } while (customerChoice == 0); // Set in error case
+                    } while (customerChoice != 6); // Set to 0 at the end of each case except exit case (6)
                     break;
 
                 
