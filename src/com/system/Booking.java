@@ -46,6 +46,7 @@ public class Booking {
             return tickets;
         } catch (NullPointerException e) {
             System.out.println("Invalid ticket ID. Please try again");
+            System.out.println("Technical error: " + e.getMessage());
             return null;
         }
     }
