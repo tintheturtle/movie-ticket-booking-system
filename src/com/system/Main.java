@@ -20,7 +20,7 @@ public class Main {
     static Booking bookingList = new Booking();
 
 
-    public static void displayMovieList(){
+    public static void displayMovieList() {
         System.out.println("\n\n\n\t\t ------------------------------------------------");
         System.out.println("\t\t ----  Movie  ------  |  ------  [Dates]  ---------");
         System.out.println("\t\t --------------------------------------------------");
@@ -35,6 +35,16 @@ public class Main {
         System.out.println("\n\nPress C + Enter to Continue");
         kb.next();
 
+    }
+
+    public static void preloadMovies() {
+        String[] titles = {"Spiderman 1", "Spiderman 1", "Spiderman 2", "Spiderman 2", "Spiderman 3"};
+        String[] times = {"11:00", "16:30", "12:00", "18:30", "22:00"};
+        String[] dates = {"01/11/22", "01/11/22", "01/11/22", "01/11/22", "01/11/22"};
+
+        for (int i = 0; i < titles.length; i++) {
+            showtimes.addMovie(titles[i], times[i], dates[i]);
+        }
     }
 
     private static boolean login() throws IOException, InterruptedException {
@@ -83,6 +93,8 @@ public class Main {
 
 
     public static void main(String[] args) throws InterruptedException, IOException {
+
+        preloadMovies();
 
         while (true) // Encloses entire function
         {

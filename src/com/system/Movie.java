@@ -68,8 +68,6 @@ public class Movie{
     // Method for checking if seat is available
     public boolean checkSeat(String letter, int col) {
         int row = (int)letter.toCharArray()[0] - 65;
-        System.out.println(row);
-        System.out.println(col);
         if (seats[row][col] == true) {
             return false;
         }
