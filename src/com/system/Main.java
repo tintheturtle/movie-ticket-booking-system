@@ -19,6 +19,9 @@ public class Main {
     // Bookings list
     static Booking bookingList = new Booking();
 
+    // Validator
+    static Validator validator = new Validator();
+
 
     public static void displayMovieList() {
         System.out.println("\n\n\n\t\t ------------------------------------------------");
@@ -40,7 +43,7 @@ public class Main {
     public static void preloadMovies() {
         String[] titles = {"Spiderman 1", "Spiderman 1", "Spiderman 2", "Spiderman 2", "Spiderman 3"};
         String[] times = {"11:00", "16:30", "12:00", "18:30", "22:00"};
-        String[] dates = {"01/11/22", "01/11/22", "01/11/22", "01/11/22", "01/11/22"};
+        String[] dates = {"01/11/2022", "01/11/2022", "01/11/2022", "01/11/2022", "01/11/2022"};
 
         for (int i = 0; i < titles.length; i++) {
             showtimes.addMovie(titles[i], times[i], dates[i]);
@@ -312,18 +315,32 @@ public class Main {
                                     System.out.println("-- Please enter movie title :");
                                     String title = kb.nextLine();
                                     title.replace('\n', ' ');
-                                    System.out.println("-- Please enter the day of the movie (DD/MM/YY) :");
+                                    System.out.println("-- Please enter the day of the movie (DD/MM/YYYY) :");
                                     String day = kb.nextLine();
+
+                                    boolean dayValid = validator.validDate(day);
+                                    if (!dayValid) {
+                                        System.out.println("-- Please enter a valid date in (DD/MM/YYYY) format");
+                                        continue;
+                                    }
 
                                     System.out.println("-- Please enter the time of the movie (HH:MM) :");
                                     String time = kb.nextLine();
+                                    boolean timeValid = validator.validTime(time);
+                                    if (!timeValid) {
+                                        System.out.println("-- Please enter a valid time in (HH:MM) format");
+                                        continue;
+                                    }
 
                                     showtimes.addMovie(title, time, day);
                                     break;
                                 case 3:
                                     ;
                                 case 4:
-                                    ;
+                                    for (Ticket ticket : bookingList.bookingList.values()) {
+                                        ticket.display();
+                                    }
+                                    break;
                                 case 5:
                                     break; // actual implementation
                                 default:
