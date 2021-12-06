@@ -150,6 +150,11 @@ public class Main {
                                 System.out.println("---------------------------------------------------------------------------------");
                                 ArrayList<Movie> selections = showtimes.displayMovieTimes(choice);
 
+                                if (selections.size() == 0) {
+                                    customerChoice=10;
+                                    break;
+                                }
+
                                 System.out.println("What time would you like to see " + choice + "? (Select a choice)");
 
 
@@ -218,8 +223,41 @@ public class Main {
 
                                 break;
                             case 4:
+
+
+                                System.out.println("Please enter your ticket reference ID: ");
+                                String ticketID = "";
+                                try {
+                                    ticketID = kb.nextLine();
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Please enter a valid ticket reference ID.");
+                                }
+
+                                // Retrieving ticket
+                                Ticket reservedSeat = bookingList.getTicket(ticketID);
+
+                                // Displaying ticket
+                                reservedSeat.display();
+
                                 break;
                             case 5:
+                                System.out.println("Please enter your ticket reference ID: ");
+                                String cancelID = "";
+                                try {
+                                    cancelID = kb.nextLine();
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Please enter a valid ticket reference ID.");
+                                }
+
+                                boolean res = bookingList.removeTicket(cancelID);
+
+                                if (res) {
+                                    System.out.println("Ticket has been successfully cancelled.");
+                                } else {
+                                    System.out.println("Unable to cancel ticket. Please try again");
+                                }
+
+
                                 break;
                             case 6:
                                 break;  // actual implementation

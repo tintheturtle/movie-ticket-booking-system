@@ -18,7 +18,7 @@ public class Booking {
 
 
         // Creating ticket object
-        Ticket createdTicket = new Ticket(movie, letter, col);
+        Ticket createdTicket = new Ticket(movie, letter, col+1);
 
         // Generate UID and ask user to save it for their own reference
         String id = UUID.randomUUID().toString().replace("-", "");
@@ -40,6 +40,16 @@ public class Booking {
         } catch (NullPointerException e) {
             System.out.println("Invalid ticket ID. Please try again");
             return null;
+        }
+    }
+
+    public boolean removeTicket(String id) {
+        try {
+            bookingList.remove(id);
+            return true;
+        } catch (NullPointerException e) {
+            System.out.println("Invalid ticket ID. Please try again.");
+            return false;
         }
     }
 
