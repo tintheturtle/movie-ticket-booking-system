@@ -117,11 +117,10 @@ public class Main {
                                 break;
                                 
                             case 2:
-                                String movieTitle;
                                 clearconsole();
                                 System.out.println("Which movie would you like to see the showtimes for?");
-                                String movieTitle = kb.nextLine();
-                                boolean validTitle = showtimes.displayShowtimeForMovie(movieTitle); // Prints all necessary info
+                                String movieTitleS = kb.nextLine();
+                                boolean validTitle = showtimes.displayShowtimeForMovie(movieTitleS); // Prints all necessary info
 
                                 if (!validTitle){
                                     // Read next key, return to main menu.
@@ -133,7 +132,7 @@ public class Main {
                             case 3:
                                 // Selecting Movie/Booking Ticket
                                 System.out.println("Which movie would you like to see?");
-                                String movieTitle = kb.nextLine();  
+                                String movieTitleB = kb.nextLine();  
                                 // I think we need a method getMovieFromTitle(String)->Movie in ShowTime class
 
                                 int availableSeats = 0;
@@ -146,7 +145,7 @@ public class Main {
                                 int reserveNum = kb.nextInt();
                                 if (reserveNum < 0 || availableSeats < reserveNum) {
                                     //System.out.println("Please try again and enter a number greater than 0.");
-                                    System.out.println("Could not reserve specified number of seats, please ensure your number is valid.")
+                                    System.out.println("Could not reserve specified number of seats, please ensure your number is valid.");
                                 }
 
                                 break;
