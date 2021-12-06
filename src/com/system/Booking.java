@@ -40,7 +40,7 @@ public class Booking {
 
     }
 
-    public ArrayList<Ticket> getTicket(String id) {
+    public ArrayList<Ticket> getBooking(String id) {
         try {
             ArrayList<Ticket> tickets = bookingList.get(id);
             return tickets;
@@ -50,7 +50,7 @@ public class Booking {
         }
     }
 
-    public boolean removeTicket(String id) {
+    public boolean removeBooking(String id) {
         try {
             bookingList.remove(id);
             return true;

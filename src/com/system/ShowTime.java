@@ -37,6 +37,7 @@ public class ShowTime{
         List<String> movieList = new ArrayList<String>(movieMap.keySet());
 
         int idx = 1;
+        Collections.sort(movieList);
         for (String show : movieList) {
             System.out.printf("\t\t\t%-20s \t%-20s\n", idx++, show);
         }

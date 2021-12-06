@@ -198,7 +198,7 @@ public class Main {
                                 }
 
                                 int completed = 0;
-                                ArrayList<Ticket> reservations = new ArrayList<Ticket>();
+                                ArrayList<Ticket> reservations = new ArrayList<>();
                                 while (completed < reserveNum) {
 
                                     // Display available seats
@@ -250,11 +250,12 @@ public class Main {
                                 }
 
                                 // Retrieving ticket
-                                ArrayList<Ticket> reservedSeats = bookingList.getTicket(ticketID);
+                                ArrayList<Ticket> reservedSeats = bookingList.getBooking(ticketID);
 
                                 // Displaying ticket
                                 for (Ticket ticket : reservedSeats ) {
                                     ticket.display();
+                                    System.out.println();
                                 }
 
                                 break;
@@ -267,7 +268,7 @@ public class Main {
                                     System.out.println("Please enter a valid ticket reference ID.");
                                 }
 
-                                boolean res = bookingList.removeTicket(cancelID);
+                                boolean res = bookingList.removeBooking(cancelID);
 
                                 if (res) {
                                     System.out.println("Ticket has been successfully cancelled.");
@@ -347,8 +348,9 @@ public class Main {
                                             System.out.println("\n");
                                         }
 
-                                        System.out.println("Next Reservation: ");
-
+                                        if (reservations.size() > 1) {
+                                            System.out.println("Next Reservation: ");
+                                        }
                                     }
                                     break;
                                 case 5:
