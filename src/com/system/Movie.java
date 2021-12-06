@@ -40,8 +40,8 @@ public class Movie{
         for (boolean[] row : seats) {
 
             // Prints row letter
-            char col = (char) (idx + 64);
-            System.out.print("\t " + col + "\t");
+            char letter = (char) (idx + 64);
+            System.out.print("\t " + letter + "\t");
             idx++;
 
             for (boolean seat : row) {
@@ -66,8 +66,10 @@ public class Movie{
     }
 
     // Method for checking if seat is available
-    public boolean checkSeat(String letter, int row) {
-        int col = (int)letter.toCharArray()[0] - 64;
+    public boolean checkSeat(String letter, int col) {
+        int row = (int)letter.toCharArray()[0] - 65;
+        System.out.println(row);
+        System.out.println(col);
         if (seats[row][col] == true) {
             return false;
         }
@@ -77,8 +79,8 @@ public class Movie{
     }
 
     // Reserve seat by marking them as true
-    public void reserveSeat(String letter, int row) {
-        int col = (int)letter.toCharArray()[0] - 64;
+    public void reserveSeat(String letter, int col) {
+        int row = (int)letter.toCharArray()[0] - 65;
         seats[row][col] = true;
     }
 

@@ -48,7 +48,7 @@ public class ShowTime{
 
             int idx = 1;
             for (Movie show : movies) {
-                System.out.printf("\t\t%-20s \t%-20s \t%-20s\n", idx++, show.date, show.time);
+                System.out.printf("\t\t%-20s \t%-20s \t\t%-20s\n", idx++, show.date, show.time);
             }
 
             return movies;

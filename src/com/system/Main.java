@@ -16,8 +16,9 @@ public class Main {
     // Showtime list
     static ShowTime showtimes = new ShowTime();
 
-    // Boolean for flagging if current user is an employee
-    static boolean isEmployee = false;
+    // Bookings list
+    static Booking bookingList = new Booking();
+
 
     public static void displayMovieList(){
         System.out.println("\n\n\n\t\t ------------------------------------------------");
@@ -143,18 +144,74 @@ public class Main {
                                 String choice = kb.nextLine();
 
                                 // Selecting Time
-                                System.out.println("What time would you like to see " + choice + "?");
+
+                                System.out.println("----  Choice  ------  |  ------  [Dates]  ---------  |  ------  [Times]  ---------");
+                                System.out.println("---------------------------------------------------------------------------------");
                                 ArrayList<Movie> selections = showtimes.displayMovieTimes(choice);
-                                int selectedTime = kb.nextInt();
 
+                                System.out.println("What time would you like to see " + choice + "? (Select a choice)");
 
+                                int selectedTime = -1;
+                                try {
+                                    selectedTime = kb.nextInt();
+                                } catch (InputMismatchException e) {
+                                    customerChoice=10;
+                                }
 
+                                Movie selection = selections.get(selectedTime-1);
 
                                 // Reserving seat
                                 System.out.println("How many seats would you like to reserve?");
-                                int reserveNum = kb.nextInt();
+                                int reserveNum = 0;
+                                try {
+                                    reserveNum = kb.nextInt();
+                                    // Remove newline from input
+                                    kb.nextLine();
+                                } catch (InputMismatchException e) {
+                                    reserveNum = 0;
+                                }
                                 if (reserveNum < 0) {
                                     System.out.println("Please try again and enter a number greater than 0.");
+                                }
+
+                                int completed = 0;
+                                while (completed < reserveNum) {
+
+                                    // Display available seats
+                                    selection.displaySeats();
+                                    String row;
+                                    try {
+                                        System.out.println("Please select a row.");
+                                        row = kb.nextLine();
+                                    } catch (InputMismatchException e) {
+                                        System.out.println("Please choose an available row.");
+                                        continue;
+                                    }
+                                    int col;
+                                    try {
+                                        System.out.println("Please select a column.");
+                                        col = kb.nextInt();
+                                        kb.nextLine();
+                                    } catch (InputMismatchException e) {
+                                        System.out.println("Please choose an available column.");
+                                        continue;
+                                    }
+
+                                    boolean available = selection.checkSeat(row, col-1);
+
+                                    if (!available) {
+                                        System.out.println("Please choose an available seat.");
+                                        continue;
+                                    }
+
+                                    boolean success = bookingList.reserve(selection, row, col-1);
+
+                                    if (!success) {
+                                        System.out.println("An error occurred while reserving this seat. Please try again.");
+                                        continue;
+                                    }
+
+                                    completed++;
                                 }
 
 

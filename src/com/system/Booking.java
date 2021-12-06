@@ -1,5 +1,6 @@
 package com.system;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -7,24 +8,17 @@ public class Booking {
 
     // hash map with unique IDs as keys and arrays of tickets as values
 
-    Map<String, Ticket> bookingList;
+    Map<String, Ticket> bookingList = new HashMap<>();
 
     // Method for reserving seats
-    public boolean reserve(Movie movie, String letter, int row) {
+    public boolean reserve(Movie movie, String letter, int col) {
 
-        // Checking if seat is taken
-        int col = (int)letter.toCharArray()[0] - 64;
 
-        if (!movie.checkSeat(letter, row)) {
-            System.out.println("This seat is currently unavailable. Please select another seat");
-            return false;
-        } else {
-            movie.reserveSeat(letter, row);
-        }
+        movie.reserveSeat(letter, col);
 
 
         // Creating ticket object
-        Ticket createdTicket = new Ticket(movie, letter, row);
+        Ticket createdTicket = new Ticket(movie, letter, col);
 
         // Generate UID and ask user to save it for their own reference
         String id = UUID.randomUUID().toString().replace("-", "");
