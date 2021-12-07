@@ -313,7 +313,7 @@ public class Main {
                             {
                                 case 1:
                                     displayMovieList();
-                                    customerChoice=0;
+                                    break;
                                 case 2:
                                     System.out.println("-- Please enter movie title :");
                                     String title = kb.nextLine();
@@ -337,8 +337,8 @@ public class Main {
 
                                     showtimes.addMovie(title, time, day);
                                     break;
-                                case 3:
-                                    ;
+                                case 3:   // TODO
+                                    break;
                                 case 4:
                                     for (ArrayList<Ticket> reservations : bookingList.bookingList.values()) {
 
@@ -358,7 +358,7 @@ public class Main {
                                     System.out.println("\n\nPLEASE ENTER A VALID CHOICE");
                                     employeeChoice = 0;
                             }
-                        } while (employeeChoice == 0);
+                        } while (employeeChoice != 5);
                     }   // if login()
                     else{
                         clearconsole();
