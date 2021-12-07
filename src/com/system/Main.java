@@ -298,8 +298,9 @@ public class Main {
                             System.out.println("\t\t --------------------------------------------------");
                             System.out.println("\t\t --  1. See Movie Showtimes                      --");
                             System.out.println("\t\t --  2. Add Movie/Showtime                       --");
-                            System.out.println("\t\t --  3. See Issued Tickets                       --");
-                            System.out.println("\t\t --  4. Back                                     --");
+                            System.out.println("\t\t --  3. Remove Movie                             --");
+                            System.out.println("\t\t --  4. See Issued Tickets                       --");
+                            System.out.println("\t\t --  5. Back                                     --");
                             System.out.println("\t\t --------------------------------------------------");
 
                             System.out.print("Enter an option: ");
@@ -338,6 +339,17 @@ public class Main {
                                     showtimes.addMovie(title, time, day);
                                     break;
                                 case 3:
+                                    System.out.println("-- Please enter movie title :");
+                                    String title = kb.nextLine();
+                                    title.replace('\n', ' ');
+                                    if (showtimes.removeMovie(title)){
+                                        System.out.println("-- Movie: \"%s\" has been removed successfully.");
+                                    }
+                                    else{
+                                        System.out.println("-- A movie with title \"%s\" could not be found, returning to employee panel.");
+                                    }
+                                    break;
+                                case 4:
                                     for (ArrayList<Ticket> reservations : bookingList.bookingList.values()) {
 
                                         for (Ticket ticket : reservations) {
@@ -350,7 +362,7 @@ public class Main {
                                         }
                                     }
                                     break;
-                                case 4:
+                                case 5:
                                     break; // actual implementation
                                 default:
                                     System.out.println("\n\nPLEASE ENTER A VALID CHOICE");
