@@ -83,5 +83,9 @@ public class Movie{
     }
 
 
+    public boolean equals(Movie show){
+        return this.title.equals(show.title);
+    }
+
 
 }
