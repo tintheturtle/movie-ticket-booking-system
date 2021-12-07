@@ -337,9 +337,7 @@ public class Main {
 
                                     showtimes.addMovie(title, time, day);
                                     break;
-                                case 3:   // TODO
-                                    break;
-                                case 4:
+                                case 3:
                                     for (ArrayList<Ticket> reservations : bookingList.bookingList.values()) {
 
                                         for (Ticket ticket : reservations) {
@@ -352,7 +350,7 @@ public class Main {
                                         }
                                     }
                                     break;
-                                case 5:
+                                case 4:
                                     break; // actual implementation
                                 default:
                                     System.out.println("\n\nPLEASE ENTER A VALID CHOICE");
