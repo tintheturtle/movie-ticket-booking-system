@@ -297,10 +297,9 @@ public class Main {
                             System.out.println("\t\t ----------------  Employee Panel   ---------------");
                             System.out.println("\t\t --------------------------------------------------");
                             System.out.println("\t\t --  1. See Movie Showtimes                      --");
-                            System.out.println("\t\t --  2. Add Movie                                --");
-                            System.out.println("\t\t --  3. Add New Showtime                         --");
-                            System.out.println("\t\t --  4. See Issued Tickets                       --");
-                            System.out.println("\t\t --  5. Back                                     --");
+                            System.out.println("\t\t --  2. Add Movie/Showtime                       --");
+                            System.out.println("\t\t --  3. See Issued Tickets                       --");
+                            System.out.println("\t\t --  4. Back                                     --");
                             System.out.println("\t\t --------------------------------------------------");
 
                             System.out.print("Enter an option: ");
