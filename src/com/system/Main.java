@@ -105,8 +105,8 @@ public class Main {
             System.out.println("\n\n\n\t\t ------------------------------------------------");
             System.out.println("\t\t --  WELCOME TO OUR MOVIE TICKET BOOKING SYSTEM  --");
             System.out.println("\t\t --------------------------------------------------");
-            System.out.println("\t\t --  1. VIEW SHOWINGS/PURCHASE TICKET            --");
-            System.out.println("\t\t --  2. EMPLOYEE LOGIN                           --");
+            System.out.println("\t\t --  1. View Showings/Reserve Ticket             --");
+            System.out.println("\t\t --  2. Employee Login                           --");
             System.out.println("\t\t --------------------------------------------------");
             System.out.print("Enter an option: ");
             int menuChoice = kb.nextInt();
