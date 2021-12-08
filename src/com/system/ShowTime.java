@@ -32,7 +32,7 @@ public class ShowTime{
     }
 
     /* Formatted as such for showMovies() in Main */
-    public void showMovies()
+    public void showMovies()   
     {
         List<String> movieList = new ArrayList<String>(movieMap.keySet());
 
@@ -43,7 +43,7 @@ public class ShowTime{
         }
     }
 
-    public ArrayList<Movie> displayMovieTimes(String title)
+    public ArrayList<Movie> displayMovieTimes(String title) 
     {
         try {
             ArrayList<Movie> movies = movieMap.get(title);
@@ -62,5 +62,15 @@ public class ShowTime{
 
     }
 
+
+    public boolean removeMovie(String title){
+        for (Movie show : this.showList){
+            if (show.title.equals(title)){
+                showList.remove(show);
+                return true;
+            }
+        }
+        return false;
+    }
     
 }
