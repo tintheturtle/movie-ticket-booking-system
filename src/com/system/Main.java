@@ -296,7 +296,7 @@ public class Main {
                             System.out.println("\n\n\n\t\t ------------------------------------------------");
                             System.out.println("\t\t ----------------  Employee Panel   ---------------");
                             System.out.println("\t\t --------------------------------------------------");
-                            System.out.println("\t\t --  1. See Movie Showtimes                      --");
+                            System.out.println("\t\t --  1. List Movie                               --");
                             System.out.println("\t\t --  2. Add Movie/Showtime                       --");
                             System.out.println("\t\t --  3. Remove Movie                             --");
                             System.out.println("\t\t --  4. See Issued Tickets                       --");
