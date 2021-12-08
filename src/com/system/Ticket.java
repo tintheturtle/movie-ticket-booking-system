@@ -7,12 +7,14 @@ public class Ticket {
     private int col;
 
 
+    //Constructor with ticket information
     public Ticket(Movie reserved, String row, int col) {
         this.movie = reserved;
         this.row = row;
         this.col = col;
     }
 
+    //Display ticket information
     public void display() {
         System.out.println("\t Ticket Information:");
         System.out.println("\t Seat: " + row + col);
