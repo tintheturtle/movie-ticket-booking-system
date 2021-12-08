@@ -340,9 +340,9 @@ public class Main {
                                     break;
                                 case 3:
                                     System.out.println("-- Please enter movie title :");
-                                    String title = kb.nextLine();
-                                    title.replace('\n', ' ');
-                                    if (showtimes.removeMovie(title)){
+                                    String newTitle = kb.nextLine();
+                                    newTitle.replace('\n', ' ');
+                                    if (showtimes.removeMovie(newTitle)){
                                         System.out.println("-- Movie: \"%s\" has been removed successfully.");
                                     }
                                     else{

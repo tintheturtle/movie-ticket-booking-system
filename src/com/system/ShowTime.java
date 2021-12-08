@@ -63,10 +63,10 @@ public class ShowTime{
     }
 
 
-    public void removeMovie(String title){
-        for (Movie show : movies){
+    public boolean removeMovie(String title){
+        for (Movie show : this.showList){
             if (show.title.equals(title)){
-                movies.remove(show);
+                showList.remove(show);
                 return true;
             }
         }
